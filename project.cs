@@ -16,7 +16,7 @@ private int N;
 // Create an NxN crossword grid of WHITE squares (4 marks)
 
 public Puzzle (int N) { 
-"hello"
+
     grid.Equals(N);
     
  }
