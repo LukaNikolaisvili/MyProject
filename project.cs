@@ -21,7 +21,9 @@ public Puzzle (int N) {
     
  }
 // Randomly initialize a crossword grid with M black squares (5 marks)
-public void Initialize (int M) {  }
+public void Initialize (int M) { 
+    
+ }
 // Number the crossword grid (6 marks)
 // public void Number ( ) { … }
 // Print out the numbers for the Across and Down clues (in order) (4 marks)
