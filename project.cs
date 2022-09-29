@@ -1,3 +1,4 @@
+
 public enum TColor {WHITE, BLACK};
 public class Square
 {
@@ -18,7 +19,7 @@ private int N;
 public Puzzle (int N) { 
 
     grid.Equals(N);
-    
+    "---hello"
  }
 // Randomly initialize a crossword grid with M black squares (5 marks)
 public void Initialize (int M) { 
