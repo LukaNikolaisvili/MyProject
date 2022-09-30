@@ -85,7 +85,7 @@ public class MyString
 
         for (int i = 0; i < length; i++){
 
-            if (i.Equals(c)){
+            if (i == 1 && i.Equals(c)){
             
                 return i;
             }
