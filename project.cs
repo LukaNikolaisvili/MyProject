@@ -38,7 +38,10 @@ public class Square
             } while (M < 0 || M > N*N);        
         }
         // Number the crossword grid (6 marks)
-        // public void Number ( ) { … }
+        public void Number() 
+        {
+
+        }
         // Print out the numbers for the Across and Down clues (in order) (4 marks)
         public void PrintClues() 
         { 
