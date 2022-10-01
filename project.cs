@@ -30,7 +30,12 @@ public class Square
         // Randomly initialize a crossword grid with M black squares (5 marks)
         public void Initialize(int M)
         {
-
+            // Enter and validate the number of black squares (positive interger)
+            do
+            {
+                Console.Write("Enter the number of black squares (positive value) → ");
+                M = Convert.ToInt32(Console.ReadLine());
+            } while (M < 0 || M > N*N);        
         }
         // Number the crossword grid (6 marks)
         // public void Number ( ) { … }
