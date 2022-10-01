@@ -1,3 +1,4 @@
+// Group Members: Farzad Imran (0729901), Luka (xxxxxxx), Rahman (xxxxxxx)  | Assignment 1
 
 public enum TColor { WHITE, BLACK };
 public class Square
@@ -18,9 +19,13 @@ public class Square
         // Create an NxN crossword grid of WHITE squares (4 marks)
         public Puzzle(int N)
         {
-
-            grid.Equals(N);
-
+        // Enter and validate the grid size (positive interger)
+            do
+            {
+                Console.Write("Enter the dimensions of the grid (i.e. '10' is 10x10) (> 0) → ");
+                N = Convert.ToInt32(Console.ReadLine());
+            } while (N < 0);
+            grid = new Square[N, N]; 
         }
         // Randomly initialize a crossword grid with M black squares (5 marks)
         public void Initialize(int M)
@@ -30,23 +35,23 @@ public class Square
         // Number the crossword grid (6 marks)
         // public void Number ( ) { … }
         // Print out the numbers for the Across and Down clues (in order) (4 marks)
-        public void PrintClues() { }
-        // Print out the crossword grid including the BLACK squares and clue numbers (5 marks)
-        public void PrintGrid() { }
-        // Return true if the grid is  (à la New York Times); false otherwise (4 marks)
+        public void PrintClues() 
+        { 
 
+        }
+        // Print out the crossword grid including the BLACK squares and clue numbers (5 marks)
+        public void PrintGrid() 
+        { 
+
+        }
+        // Return true if the grid is  (à la New York Times); false otherwise (4 marks)
+        public bool Symmetric()
+         {
+
+         }
     }
 
-
-
-
-    // hello, how are you...
-
 }
-
-<<<<<<< HEAD
-// test
-=======
 
 public class MyString
 {
@@ -59,7 +64,6 @@ public class MyString
         {
             this.item = item;
             this.next = next;
->>>>>>> 5d709c02e0d11e00d2e26d0d2ce4b9391e7154fb
 
 
 
