@@ -66,6 +66,7 @@ public class Square
             }
             for (int x = 0; x < (N * 4) + 1; x++)
                 Console.Write(line);
+            Console.WriteLine();
             Console.ReadLine(); */
         }
         // Return true if the grid is  (à la New York Times); false otherwise (4 marks)
