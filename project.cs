@@ -50,7 +50,23 @@ public class Square
         // Print out the crossword grid including the BLACK squares and clue numbers (5 marks)
         public void PrintGrid() 
         { 
-
+           /* const string line = "-";
+            for (int row = 0; row < Array.GetLength(1); row++)
+            {
+                for (int x = 0; x < (N * 4) + 1; x++)
+                    Console.Write(line);
+                Console.WriteLine();
+                for (int col = 0; col < Array.GetLength(0); col++)
+                {
+                    Console.Write("|");
+                    Console.Write("{0}", Array[row, col]);
+                }
+                Console.Write("|");
+                Console.WriteLine();
+            }
+            for (int x = 0; x < (N * 4) + 1; x++)
+                Console.Write(line);
+            Console.ReadLine(); */
         }
         // Return true if the grid is  (à la New York Times); false otherwise (4 marks)
         public bool Symmetric()
