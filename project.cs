@@ -51,12 +51,12 @@ public class Square
         public void PrintGrid() 
         { 
            /* const string line = "-";
-            for (int row = 0; row < Array.GetLength(1); row++)
+            for (int row = 0; row < Array.GetLength(0); row++)
             {
                 for (int x = 0; x < (N * 4) + 1; x++)
                     Console.Write(line);
                 Console.WriteLine();
-                for (int col = 0; col < Array.GetLength(0); col++)
+                for (int col = 0; col < Array.GetLength(1); col++)
                 {
                     Console.Write("|");
                     Console.Write("{0}", Array[row, col]);
