@@ -1,4 +1,4 @@
-// Group Members: Farzad Imran (0729901), Luka (xxxxxxx), Rahman (xxxxxxx)  | Assignment 1
+// Group Members: Farzad Imran (0729901), Luka (xxxxxxx), Rahman Saeed (0706145)  | Assignment 1
 
 public enum TColor { WHITE, BLACK };
 public class Square
