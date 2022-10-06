@@ -69,7 +69,7 @@ public class Square
             Console.WriteLine();
             Console.ReadLine(); */
         }
-        // Return true if the grid is  (à la New York Times); false otherwise (4 marks)
+        // Return true if the grid is  (à la New York Times funny); false otherwise (4 marks)
         public bool Symmetric()
          {
 
