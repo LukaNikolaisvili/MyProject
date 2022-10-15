@@ -3,9 +3,8 @@
  public enum TColor { WHITE, BLACK };
  public class project
  {
-     public TColor Color { set; get; } // Either WHITE or BLACK
+    public TColor Color { set; get; } // Either WHITE or BLACK
     public int Number { set; get; } // Either a clue number or -1 (Note: A BLACK square is always -1)
-                                     // Initialize a square to WHITE and its clue number to -1 (2 marks)
     public static void Main()
     {
         // Enter and validate the grid size (positive interger)
@@ -24,6 +23,7 @@
              } while (M < 0 || M > N*N);
              Initialize(M);  
     }
+     // Initialize a square to WHITE and its clue number to -1 (2 marks)
      public Square()
      {
          for (int row = 0; row < N; row++)
