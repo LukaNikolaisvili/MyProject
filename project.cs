@@ -1,7 +1,7 @@
 // Group Members: Farzad Imran (0729901), Luka (xxxxxxx), Rahman Saeed (0706145)  | Assignment 1
 
  public enum TColor { WHITE, BLACK };
- public class project
+ public class PartA
  {
     public TColor Color { set; get; } // Either WHITE or BLACK
     public int Number { set; get; } // Either a clue number or -1 (Note: A BLACK square is always -1)
@@ -44,12 +44,23 @@
          // Create an NxN crossword grid of WHITE squares (4 marks)
          public Puzzle(int N)
          {
-             grid = new Square[N, N]; 
+             grid = new Square[N, N];
+             Square(); 
          }
          // Randomly initialize a crossword grid with M black squares (5 marks)
          public void Initialize(int M)
          {
-            
+            int BCount = 0;
+            Random r = new Random();
+            do
+            {
+                int rX = r.Next(0,N);
+                int rY = r.Next(0,N);
+                if (grid[rX,rY].Color = TColor.WHITE)
+                {
+                    
+                }
+            } while (BCount != M);
          }
          // Number the crossword grid (6 marks)
          public void Number() 
