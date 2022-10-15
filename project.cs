@@ -26,8 +26,14 @@
     }
      public Square()
      {
-         this.Color = TColor.WHITE;
-         this.Number = -1;
+         for (int row = 0; row < N; row++)
+             {
+                 for (int col = 0; col < N; col++)
+                 {
+                     this.Color = TColor.WHITE;
+                     this.Number = -1;
+                 }
+             }  
      }
 
      public class Puzzle
@@ -52,7 +58,7 @@
          // Print out the numbers for the Across and Down clues (in order) (4 marks)
          public void PrintClues() 
          { 
-            
+
          }
          // Print out the crossword grid including the BLACK squares and clue numbers (5 marks)
          public void PrintGrid() 
