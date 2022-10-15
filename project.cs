@@ -32,6 +32,7 @@
                  {
                      this.Color = TColor.WHITE;
                      this.Number = -1;
+                     grid[row,col] = "   ";
                  }
              }  
      }
