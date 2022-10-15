@@ -28,3 +28,11 @@ C:\Users\N1ko\MyProject\obj\Debug\net6.0\refint\MyProject.dll
 C:\Users\N1ko\MyProject\obj\Debug\net6.0\MyProject.pdb
 C:\Users\N1ko\MyProject\obj\Debug\net6.0\MyProject.genruntimeconfig.cache
 C:\Users\N1ko\MyProject\obj\Debug\net6.0\ref\MyProject.dll
+C:\Users\Frost Imran\MyProject\obj\Debug\net6.0\MyProject.csproj.AssemblyReference.cache
+C:\Users\Frost Imran\MyProject\obj\Debug\net6.0\MyProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Frost Imran\MyProject\obj\Debug\net6.0\MyProject.AssemblyInfoInputs.cache
+C:\Users\Frost Imran\MyProject\obj\Debug\net6.0\MyProject.AssemblyInfo.cs
+C:\Users\Frost Imran\MyProject\obj\Debug\net6.0\MyProject.csproj.CoreCompileInputs.cache
+C:\Users\Frost Imran\MyProject\obj\Debug\net6.0\MyProject.dll
+C:\Users\Frost Imran\MyProject\obj\Debug\net6.0\refint\MyProject.dll
+C:\Users\Frost Imran\MyProject\obj\Debug\net6.0\MyProject.pdb

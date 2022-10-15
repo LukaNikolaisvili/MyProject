@@ -1,8 +1,12 @@
 {
   "version": 2,
+<<<<<<< HEAD
+  "dgSpecHash": "IvvEhlE0erpnGEkht3dvlaYTrtryYDjv1P2PQXmnwxVBJOr172KPspc2CDU6IUzKsPLSm3P/JMRFKebYz4st0Q==",
+=======
   "dgSpecHash": "Jsq/ktNNAdwx69JSvwdcDsfuPCXzLA6d2iqXooJW/Vu69A39uM6Cs9UFsQAuVkbVZxY5mv0qRTh89hE2Bt1cvw==",
+>>>>>>> 78a720b0475716ddc53e5cd58b963454c5bc522f
   "success": true,
-  "projectFilePath": "C:\\Users\\N1ko\\MyProject\\MyProject.csproj",
+  "projectFilePath": "C:\\Users\\Frost Imran\\MyProject\\MyProject.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
