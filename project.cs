@@ -1,82 +1,89 @@
-// // Group Members: Farzad Imran (0729901), Luka (xxxxxxx), Rahman (xxxxxxx)  | Assignment 1
+// Group Members: Farzad Imran (0729901), Luka (xxxxxxx), Rahman (xxxxxxx)  | Assignment 1
 
-// public enum TColor { WHITE, BLACK };
-// public class project
-// {
-//     public TColor Color { set; get; } // Either WHITE or BLACK
-//     public int Number { set; get; } // Either a clue number or -1 (Note: A BLACK square is always -1)
-//                                     // Initialize a square to WHITE and its clue number to -1 (2 marks)
-//     public project()
-//     {
-//         this.Color = TColor.WHITE;
-//         this.Number = -1;
-//     }
+ public enum TColor { WHITE, BLACK };
+ public class project
+ {
+     public TColor Color { set; get; } // Either WHITE or BLACK
+    public int Number { set; get; } // Either a clue number or -1 (Note: A BLACK square is always -1)
+                                     // Initialize a square to WHITE and its clue number to -1 (2 marks)
+    public static void Main()
+    {
+        // Enter and validate the grid size (positive interger)
+             do
+             {
+                 Console.Write("Enter the dimensions of the grid (i.e. '10' is 10x10) (> 0) → ");
+                 N = Convert.ToInt32(Console.ReadLine());
+             } while (N < 0);
+             Puzzle(N);
 
-//     public class Puzzle
-//     {
-//         private project[,] grid;
-//         private int N;
-//         // Create an NxN crossword grid of WHITE squares (4 marks)
-//         public Puzzle(int N)
-//         {
-//         // Enter and validate the grid size (positive interger)
-//             do
-//             {
-//                 Console.Write("Enter the dimensions of the grid (i.e. '10' is 10x10) (> 0) → ");
-//                 N = Convert.ToInt32(Console.ReadLine());
-//             } while (N < 0);
-//             grid = new project[N, N]; 
-//         }
-//         // Randomly initialize a crossword grid with M black squares (5 marks)
-//         public void Initialize(int M)
-//         {
-//             // Enter and validate the number of black squares (positive interger)
-//             do
-//             {
-//                 Console.Write("Enter the number of black squares (positive value) → ");
-//                 M = Convert.ToInt32(Console.ReadLine());
-//             } while (M < 0 || M > N*N);        
-//         }
-//         // Number the crossword grid (6 marks)
-//         public void Number() 
-//         {
+          // Enter and validate the number of black squares (positive interger)
+             do
+             {
+                 Console.Write("Enter the number of black squares (positive value) → ");
+                 M = Convert.ToInt32(Console.ReadLine());
+             } while (M < 0 || M > N*N);
+             Initialize(M);  
+    }
+     public Square()
+     {
+         this.Color = TColor.WHITE;
+         this.Number = -1;
+     }
 
-//         }
-//         // Print out the numbers for the Across and Down clues (in order) (4 marks)
-//         public void PrintClues() 
-//         { 
+     public class Puzzle
+     {
+         private Square[,] grid;
+         private int N;
+         // Create an NxN crossword grid of WHITE squares (4 marks)
+         public Puzzle(int N)
+         {
+             grid = new Square[N, N]; 
+         }
+         // Randomly initialize a crossword grid with M black squares (5 marks)
+         public void Initialize(int M)
+         {
+            
+         }
+         // Number the crossword grid (6 marks)
+         public void Number() 
+         {
 
-//         }
-//         // Print out the crossword grid including the BLACK squares and clue numbers (5 marks)
-//         public void PrintGrid() 
-//         { 
-//            /* const string line = "-";
-//             for (int row = 0; row < Array.GetLength(0); row++)
-//             {
-//                 for (int x = 0; x < (N * 4) + 1; x++)
-//                     Console.Write(line);
-//                 Console.WriteLine();
-//                 for (int col = 0; col < Array.GetLength(1); col++)
-//                 {
-//                     Console.Write("|");
-//                     Console.Write("{0}", Array[row, col]);
-//                 }
-//                 Console.Write("|");
-//                 Console.WriteLine();
-//             }
-//             for (int x = 0; x < (N * 4) + 1; x++)
-//                 Console.Write(line);
-//             Console.WriteLine();
-//             Console.ReadLine(); */
-//         }
-//         // Return true if the grid is  (à la New York Times); false otherwise (4 marks)
-//         // public bool Symmetric()
-//         //  {
+         }
+         // Print out the numbers for the Across and Down clues (in order) (4 marks)
+         public void PrintClues() 
+         { 
+            
+         }
+         // Print out the crossword grid including the BLACK squares and clue numbers (5 marks)
+         public void PrintGrid() 
+         { 
+             const string line = "-";
+             for (int row = 0; row < N; row++)
+             {
+                 for (int x = 0; x < (N * 4) + 1; x++)
+                     Console.Write(line);
+                 Console.WriteLine();
+                 for (int col = 0; col < N; col++)
+                 {
+                     Console.Write("|");
+                     Console.Write("{0}", Array[row, col]);
+                 }
+                 Console.Write("|");
+                 Console.WriteLine();
+             }
+             for (int x = 0; x < (N * 4) + 1; x++)
+                 Console.Write(line);
+             Console.WriteLine();
+             Console.ReadLine(); 
+         }
+         // Return true if the grid is  (à la New York Times); false otherwise (4 marks)
+          public bool Symmetric()
+           {
 
-//         //  }
-//     }
+           }
+     }
 
-// }
+ }
 
 // public class MyString
 // {
@@ -119,9 +126,9 @@
 //         for (i = 0; i < length; i++){
 
 //             if (i == 1 && i.Equals(c))
-            
+
 //                 return i;
-            
+
 //             else 
 
 //                 return -1;
