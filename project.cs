@@ -58,7 +58,9 @@
                 int rY = r.Next(0,N);
                 if (grid[rX,rY].Color = TColor.WHITE)
                 {
-                    
+                    this.Color = TColor.BLACK;
+                    grid[rX,rY] = " X ";
+                    BCount++;
                 }
             } while (BCount != M);
          }
