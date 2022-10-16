@@ -97,8 +97,36 @@
     // Print out the numbers for the Across and Down clues (in order) (4 marks)
     public void PrintClues()
     {
-
+         Console.WriteLine("Across");
+        for (int row = 0; row < N; row++)
+        {
+            for (int col = 0; col < N; col++)
+            {
+                if (grid[row, col].Clue != -1)
+                {
+                    if (grid[row, col + 1].Color != TColor.BLACK)
+                    {
+                        Console.Write(grid[row, col].Clue);
+                    }
+                }
+            }
+        }
+        Console.WriteLine("Down");
+        for (int row = 0; row < N; row++)
+        {
+            for (int col = 0; col < N; col++)
+            {
+                if (grid[row, col].Clue != -1)
+                {
+                    if (grid[row + 1, col].Color != TColor.BLACK)
+                    {
+                        Console.Write(grid[row, col].Clue);
+                    }
+                }
+            }
+        }
     }
+
     // Print out the crossword grid including the BLACK squares and clue numbers (5 marks)
     public void PrintGrid()
     {
