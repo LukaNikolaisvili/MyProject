@@ -160,32 +160,26 @@
     // Return true if the grid is  (à la New York Times); false otherwise (4 marks)
     public bool Symmetric()
     {
-        {
+       
+    
+        bool Result = false;
         for (int row = 0; row < N; row++)
         {
             for (int col = 0; col < N; col++)
-            {       
-
-                //First checking if the square is black, and then going to another (nested if statement)...
+            {
                 if (grid[row, col].Color.Equals(TColor.BLACK))
-                {       
-
-                    //in here we are comapring two color objects if they are equalt to each other(Symetric) -- mirror effect.
+                {
                     if ((grid[row, col].Color.Equals(TColor.BLACK)) && (grid[col, row].Color.Equals(TColor.BLACK)))
-                    {   
-                        //returns true if its symetric
-                        return true;
+                    {
+                        Result = true;
                     }
-
-                    //false otherwise
                     else
-                        return false;
+                        Result = false;
                 }
             }
         }
+        return Result;
+        
 
-        //true by default if there is no black squares at all(so we can say that the grid is symetric by default)
-        return true;
-    }
     } 
 }
