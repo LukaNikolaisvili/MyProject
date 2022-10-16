@@ -145,14 +145,13 @@
 // }
 
 
-
-// // Return the index of the first occurrence of c in this instance; otherwise -1 (4 marks)
-// // public int IndexOf(char c) { }
-// // // Remove all occurrences of c from this instance (4 marks)
-// // public void Remove (char c) { … }
-// // // Return true if obj is both of type MyString and the same as this instance;
-// // // otherwise false (6 marks)
-// // public override bool Equals (object obj) {  }
-// // // Print out this instance of MyString (3 marks)
-// // public void Print( ) {  }
-// // }
+// Return the index of the first occurrence of c in this instance; otherwise -1 (4 marks)
+ // public int IndexOf(char c) { }
+ // Remove all occurrences of c from this instance (4 marks)
+ // public void Remove (char c) { … }
+  // Return true if obj is both of type MyString and the same as this instance;
+  // otherwise false (6 marks)
+ // public override bool Equals (object obj) {  }
+// Print out this instance of MyString (3 marks)
+ // public void Print( ) {  }
+ // }
