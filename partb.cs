@@ -21,112 +21,112 @@ public class MyString
         length = 0;
     }
 
-    public MyString(char[] A)
+    public MyString(char[] charA)
     {
-        front = new Node(A[0]);
+        front = new Node(charA[0]);
         Node current = front;
-        for (int i = 1; i < A.Length; i++)
+        for (int i = 1; i < charA.Length; i++) //loop starting from 1 going till the last length of the charA
         {
-            current.next = new Node(A[i]);
-            current = current.next;
+            current.next = new Node(charA[i]); //reffering current.next to the new node object getting index from the Array[i]
+            current = current.next; //moving forward by assigning one more time .next
         }
-        length = A.Length;
+        length = charA.Length; //assigning length to be eqaul to the CharA length 
 
     }
     // Using a stack, reverse this instance of MyString (6 marks)
-    public void Reverse()
+    public void Reverse() //reverse method 
     {
-        Stack<char> S = new Stack<char>();
-        Node CurrentNode = front;
-        while (CurrentNode != null)
+        Stack<char> St = new Stack<char>(); //creating new Stack object
+        Node CurrentNode = front; //this is the Node that reffers to the front
+        while (CurrentNode != null) //while loop checking the condition if the current node is not empty (null)
         {
-            S.Push(CurrentNode.item);
-            CurrentNode = CurrentNode.next;
+            St.Push(CurrentNode.item); // then we add new item on  current node.item into the stack 
+            CurrentNode = CurrentNode.next; //moving forward with the .next 
         }
-        CurrentNode = front;
-        while (CurrentNode != null)
+        CurrentNode = front; //assigninng Currnet node to be front
+        while (CurrentNode != null) //while loop checking if the Currnet node is not null/empty
         {
-            CurrentNode.item = S.Pop();
-            CurrentNode = CurrentNode.next;
+            CurrentNode.item = St.Pop(); // we remove the item from the St character stack<>
+            CurrentNode = CurrentNode.next; // assigning the current node to the next element
 
         }
 
     }
     // Return the index of the first occurrence of c in this instance; otherwise -1 (4 marks)
-    public int IndexOf(char c)
+    public int IndexOf(char c) // indexOf method
     {
-        for (int i = 0; i < length; i++)
+        for (int g = 0; g < length; g++) // for loop that starts from 0 and goes till the length 
         {
-            if (i == 1 && i.Equals(c))
-                return i;
+            if (g == 1 && g.Equals(c)) //checking the condition if true ---> we goign in the if statement 
+                return g; //returning the g from the loop index 
         }
-        return -1;
+        return -1; //same thing as else //returning -1 if the if statement does not turn out to be true 
     }
     // Remove all occurrences of c from this instance (4 marks)
-    public void Remove(char toremove)
+    public void Remove(char toremove) //remove method 
     {
-        if (front == null)
+        if (front == null) // checking if statement condition if the front is null/empty
         {
-            return;
+            return; //we terminate 
         }
 
-        while (front.item == toremove)
+        while (front.item == toremove) // while loop checking the condition if the front.item is equal to the character that we want to remove while true --->
         {
-            front = front.next;
-            length--;
+            front = front.next; // assigning the front to be the next element 
+            length--; //decrementing the length 
         }
 
-        Node current = front;
-        while (current.next != null)
+        Node current = front; //creating assigning front to be the Current Node
+        while (current.next != null) // if the currnet node that we are at a.t.m is not empty/null we going in the while loop
         {
-            if (current.next.item == toremove)
+            if (current.next.item == toremove) //and checking the condition if the current.next.item is the char that we are willing to remove if true --->
             {
-                current.next = current.next.next;
-                length--;
+                current.next = current.next.next; //moving to the next node 
+                length--; //decrementing the length 
             }
-            else
+            else //otherwise 
             {
-                current = current.next;
+                current = current.next; // current is the node.next
             }
         }
     }
     // Return true if obj is both of type MyString and the same as this instance;
     // otherwise false (6 marks)
-    public override bool Equals(Object obj)
+    public override bool Equals(Object objecT)
     {
-        if (obj == null)
+        if (objecT == null) //checking if the object is empty/null
         {
-            throw new ArgumentNullException(
-                nameof(obj));
+            throw new ArgumentNullException( //not to crush we are throwing the exception 
+                nameof(objecT)); //prints out the name of the object 
 
         }
 
-        if (obj is char)
+        if (objecT is char) // if the Object is character 
         {
-            char c1 = (char)obj;
+            char charA = (char)objecT; // and charA is the char object 
         }
-        return true;
+        return true; //returning true 
 
     }
     // Print out this instance of MyString (3 marks)
-    public void Print()
+    public void Print() //print method 
     {
-        Node current = front;
-        while (current != null)
+        Node current = front; //assigning current node to be front
+        while (current != null) // while loop checking if the current is not empty, if true ---> 
         {
-            Console.Write(current.item);
-            current = current.next;
+            Console.Write(current.item); //printing out current item 
+            current = current.next; //moving forward
         }
-        Console.WriteLine();
+        Console.WriteLine(); 
     }
 
-    public static void Main(String[] args)
+    public static void Main(String[] args) //main method "Driving force"
     {
-        MyString myString = new MyString();
-        while (true)
+        MyString stringobj = new MyString(); //declearing the object calling it stringobj
+        while (true) // checking while everything in this while loop is true continue..
         {
-            // Menu
-            Console.WriteLine("#1. Create new word");
+            // people to know what are the functions that we have (like a menu type of thing )  
+            Console.WriteLine("#1. Create new word");  
             Console.WriteLine("#2. Reverse the word");
             Console.WriteLine("#3. Remove any character from word");
             Console.WriteLine("#4. Show the result (print)");
@@ -134,38 +134,43 @@ public class MyString
             Console.Write("Please Enter your choice: ");
 
             int choice = Convert.ToInt32(Console.ReadLine());
-            switch (choice)
+            switch (choice) //switch case to do different opperation based on the filtering the input of the integer choice 
             {
                 case 1:
                     Console.Write("Enter some word: ");
                     string input = Console.ReadLine();
                     char[] items = input.ToCharArray();
-                    myString = new MyString(items);
+                    stringobj = new MyString(items);
                     Console.Write("Word that has been created is: " + "\n " + "------------------------------> ");
-                    myString.Print();
+                    stringobj.Print();
                     break;
                 case 2:
                     Console.Write("Reversed Word is : " + "\n " + "------------------------------> ");
-                    myString.Reverse();
-                    myString.Print();
+                    stringobj.Reverse();
+                    stringobj.Print();
                     break;
                 case 3:
                     Console.Write("Enter a letter to remove: ");
                     char c = Convert.ToChar(Console.ReadLine());
-                    myString.Remove(c);
+                    stringobj.Remove(c);
                     Console.Write("After removing the letter the word is: " + "\n " + "------------------------------> ");
-                    myString.Print();
+                    stringobj.Print();
 
                     break;
                 case 4:
                     Console.Write("Printed word is: " + "\n " + "------------------------------> ");
-                    myString.Print();
+                    stringobj.Print();
                     break;
 
                 case 5:
                     Console.WriteLine("Program Exited Successfuly!");
                     return;
 
+                // case 6:
+
+                //    checks if they equal
+
+                // return;
 
                 default:
                     Console.WriteLine("Invalid choice Try again!");
