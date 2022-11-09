@@ -1,51 +1,60 @@
-                                //Assignment #2 Group Members: --- Luka Nikolaisvili - 0674677  --- Farzhad - , --- Rahman - 
+//Assignment #2 Group Members: --- Luka Nikolaisvili - 0674677  --- Farzhad - , --- Rahman - 
 
 using huffmanCOde;
 
-namespace huffmanCOde{
+namespace huffmanCOde
+{
 
-    class Node : IComparable{
+    class Node : IComparable
+    {
         public char Character { get; set; }
         public int Frequency { get; set; }
         public Node Left { get; set; }
         public Node Right { get; set; }
 
-        public Node HuffmanTree{ get; set; }
+        public Node HuffmanTree { get; set; }
         public char I { get; }
         public int V { get; }
 
-        public Node(char Character, int Frequency, Node Left, Node Right){
+        public Node(char Character, int Frequency, Node Left, Node Right)
+        {
             this.Character = Character;
             this.Frequency = Frequency;
             this.Left = Left;
             this.Right = Right;
         }
 
-        public Node(char i, int v){
+        public Node(char i, int v)
+        {
             I = i;
             V = v;
         }
 
-        public int CompareTo(Object obj){
+        public int CompareTo(Object obj)
+        {
 
             Node f = (Node)obj;
 
-            if (f.Frequency > Frequency){
+            if (f.Frequency > Frequency)
+            {
 
                 return 1;
             }
 
-            else if (f.Frequency < Frequency){
+            else if (f.Frequency < Frequency)
+            {
 
                 return -1;
             }
 
-            else if (f.Frequency == Frequency){
+            else if (f.Frequency == Frequency)
+            {
 
                 return 0;
             }
 
-            else{
+            else
+            {
 
                 throw new Exception("They can not be compared");
             }
@@ -55,32 +64,34 @@ namespace huffmanCOde{
 }
 
 
-class Huffman{
+class Huffman
+{
     private Node HuffmanTree;
 
-    
+
     private Dictionary<char, string> dictionary = new Dictionary<char, string>(); //dictionary to encode text
 
     private string text;
     string theBit = "";
 
-    public Huffman(string S){
+    public Huffman(string S)
+    {
         text = S;
 
         Build(AnalyzeText()); //invokes the Buld();
 
-        
+
         CreateCodes(HuffmanTree, theBit); //invokes the createCodes()
     }
 
-
-
-    private int[] AnalyzeText(){
+    private int[] AnalyzeText()
+    {
 
         int[] arrContain = new int[255];
 
 
-        foreach (char character in text){
+        foreach (char character in text)
+        {
 
 
             arrContain[(int)character]++;
@@ -91,34 +102,37 @@ class Huffman{
     }
 
     //build a huffman tree
-    private void Build(int[] arr){
+    private void Build(int[] arr)
+    {
 
 
         Node left, Right;
 
-
         PriorityQueue<Node> priorityQueue = new PriorityQueue<Node>(255);
 
 
-        for (int i = 32; i < arr.Length; i++){
+        for (int i = 32; i < arr.Length; i++)
+        {
 
-            if (arr[i] > 0){
-
+            if (arr[i] > 0)
+            {
 
                 priorityQueue.Add(new Node((char)i, arr[i]));
             }
         }
 
-
-        if (priorityQueue.Size() == 1){
+        if (priorityQueue.Size() == 1)
+        {
 
             HuffmanTree = priorityQueue.Front();
         }
 
         // --- this else  builds a binary tree
-        else{
+        else
+        {
 
-            while (priorityQueue.Size() > 1){
+            while (priorityQueue.Size() > 1)
+            {
 
                 left = priorityQueue.Front();
                 priorityQueue.Remove();
@@ -129,18 +143,15 @@ class Huffman{
 
             HuffmanTree = priorityQueue.Front();
         }
-
-
     }
-
-
-    private void CreateCodes(Node HuffmanTree, string theBits){
+    private void CreateCodes(Node HuffmanTree, string theBits)
+    {
 
         Node curr = HuffmanTree;
-
         //traverses through the binary tree
-        if (curr.Left != null && curr.Right != null){
-            CreateCodes(curr.Left, theBits + "0");  
+        if (curr.Left != null && curr.Right != null)
+        {
+            CreateCodes(curr.Left, theBits + "0");
             CreateCodes(curr.Right, theBits + "1");
         }
 
@@ -151,16 +162,17 @@ class Huffman{
         }
 
     }
-
-
-    public string Encode(String str){
+    public string Encode(String str)
+    {
         string encoded = "";
 
-        foreach (char item in str){
+        foreach (char item in str)
+        {
 
             char character = (char)item;
 
-            foreach (KeyValuePair<char, string> value in dictionary){
+            foreach (KeyValuePair<char, string> value in dictionary)
+            {
 
                 if (character == value.Key)
                     encoded += value.Value;
@@ -169,119 +181,110 @@ class Huffman{
 
         return encoded;
     }
-
     //Decode the given string of 0s and 1s and return original text
-    public string Decode(String text){
-
-
+    public string Decode(String text)
+    {
         Node curr = HuffmanTree;
         string decoded = "";
 
-        foreach (char chars in text){
+        foreach (char chars in text)
+        {
 
-            if (curr.Left == null){
+            if (curr.Left == null)
+            {
 
                 decoded += curr.Character;
                 curr = HuffmanTree;
             }
 
-            else if(chars == '0'){
-                
-                    curr = curr.Left;
-                }
-                   
-                else{
+            else if (chars == '0')
+            {
 
-                    curr = curr.Right;
-                }
-                    
+                curr = curr.Left;
             }
-            
-            if (curr.Left == null){
-                decoded += curr.Character;
-                curr = HuffmanTree;
+
+            else
+            {
+
+                curr = curr.Right;
             }
-        
+
+        }
+
+        if (curr.Left == null)
+        {
+            decoded += curr.Character;
+            curr = HuffmanTree;
+        }
+
 
         return decoded;
     }
 }
-
-
-
-public interface IContainer<T>{
+public interface IContainer<T>
+{
     void MakeEmpty();
     bool Empty();
     int Size();
 }
-
-
-
-public interface IPriorityQueue<T> : IContainer<T> where T : IComparable{
+public interface IPriorityQueue<T> : IContainer<T> where T : IComparable
+{
     void Add(T item);
     void Remove();
     T Front();
 }
-
-
-
 // Priority Queue
 // Implementation: Binary heap
-
-public class PriorityQueue<T> : IPriorityQueue<T> where T : IComparable{
+public class PriorityQueue<T> : IPriorityQueue<T> where T : IComparable
+{
     private int cap;
     private T[] arr;
     private int counter;
 
-    public PriorityQueue(int size){
+    public PriorityQueue(int size)
+    {
 
         cap = size;
         arr = new T[size + 1];
     }
-
-
-    private void PercolateUp(int i){
+    private void PercolateUp(int i)
+    {
 
         int child = i, parent;
 
-        while (child > 1){
-
+        while (child > 1)
+        {
             parent = child / 2;
-            if (arr[child].CompareTo(arr[parent]) > 0){
-
+            if (arr[child].CompareTo(arr[parent]) > 0)
+            {
 
                 T item = arr[child];
                 arr[child] = arr[parent];
                 arr[parent] = item;
                 child = parent;
-
             }
             else
 
                 return;
         }
     }
+    public void Add(T item)
+    {
 
-    public void Add(T item){
-
-        if (counter < cap){
+        if (counter < cap)
+        {
 
             arr[++counter] = item;
             PercolateUp(counter);
 
         }
     }
-
-
-
-    private void PercolateDown(int i){
+    private void PercolateDown(int i)
+    {
 
         int parent = i, child;
-
         while (2 * parent <= counter)
-
         {
-
             child = 2 * parent;
             if (child < counter)
                 if (arr[child + 1].CompareTo(arr[child]) > 0)
@@ -303,127 +306,116 @@ public class PriorityQueue<T> : IPriorityQueue<T> where T : IComparable{
         }
     }
 
-    public void Remove(){
+    public void Remove()
+    {
         if (!Empty())
         {
-
-
             arr[1] = arr[counter--];
-
-
             PercolateDown(1);
         }
     }
+    public T Front()
+    {
 
-    public T Front(){
-
-        if (!Empty()){
+        if (!Empty())
+        {
             return arr[1];
         }
 
-      else{
+        else
+        {
             return arr[0];
-      }
-            
+        }
+
     }
-
-
-
-    private void BuildHeap(){
-
+    private void BuildHeap()
+    {
         int i;
-        for (i = counter / 2; i >= 1; i--){
+        for (i = counter / 2; i >= 1; i--)
+        {
 
             PercolateDown(i);
         }
     }
-
-
-
-    public void HeapSort(T[] inputArray){
+    public void HeapSort(T[] inputArray)
+    {
         int i;
 
         cap = counter = inputArray.Length;
 
-
-        for (i = cap - 1; i >= 0; i--){
+        for (i = cap - 1; i >= 0; i--)
+        {
 
             arr[i + 1] = inputArray[i];
 
         }
-
-
         BuildHeap();
 
-        for (i = 0; i < cap; i++){
+        for (i = 0; i < cap; i++)
+        {
 
             inputArray[i] = Front();
             Remove();
         }
     }
 
-    public void MakeEmpty(){
+    public void MakeEmpty()
+    {
 
         counter = 0;
     }
 
-    public bool Empty(){
+    public bool Empty()
+    {
 
         return counter == 0;
     }
-
-    public int Size(){
+    public int Size()
+    {
 
         return counter;
-
     }
 }
 
-
-
-
-
-public class PriorityClass : IComparable{
+public class PriorityClass : IComparable
+{
     private int priorValue;
     private String name;
 
-    public PriorityClass(int priority, String name){
+    public PriorityClass(int priority, String name)
+    {
         this.name = name;
         priorValue = priority;
     }
-
-    public int CompareTo(Object obj){
+    public int CompareTo(Object obj)
+    {
 
         PriorityClass other = (PriorityClass)obj;
         return priorValue - other.priorValue;
     }
-
-    public override string ToString(){
+    public override string ToString()
+    {
 
         return name + "--- " + priorValue;
     }
 }
-
 //-----------------------------------------------------------------------------
+public class mainMethod
+{
+    static void Main(string[] args)
+    {
 
-public class mainMethod{
-
-    static void Main(string[] args){
-
-
-
-        while (true){ // checking while everything in this while loop is true continue..
-
+        while (true)
+        { // checking while everything in this while loop is true continue..
             // people to know what are the functions that we have (like a menu type of thing )  
             Console.WriteLine("#1. Encode");
             Console.WriteLine("#2. Decode");
             Console.WriteLine("#3. Equals");
             Console.WriteLine("#4. Close the application");
             Console.Write("Please Enter your choice: ");
-
             int choice = Convert.ToInt32(Console.ReadLine());
-            switch (choice){ //switch case to do different operation based on the filtering the input of the integer choice 
-            
+            switch (choice)
+            { //switch case to do different operation based on the filtering the input of the integer choice 
                 case 1:
                     Console.Write("Enter some word to : ");
                     String encode = Console.ReadLine();
@@ -446,7 +438,6 @@ public class mainMethod{
                 case 4:
                     Console.WriteLine("Program Exited Successfully!");
                     return;
-
 
                 default:
                     Console.WriteLine("Invalid choice Try again!");
