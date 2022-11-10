@@ -35,29 +35,29 @@ namespace huffmanCOde
 
             Node f = (Node)obj;
             return f.Frequency.CompareTo(this.Frequency);
-            // if (f.Frequency > Frequency)
-            // {
+            if (f.Frequency > Frequency)
+            {
 
-            //     return 1;
-            // }
+                return 1;
+            }
 
-            // else if (f.Frequency < Frequency)
-            // {
+            else if (f.Frequency < Frequency)
+            {
 
-            //     return -1;
-            // }
+                return -1;
+            }
 
-            // else if (f.Frequency == Frequency)
-            // {
+            else if (f.Frequency == Frequency)
+            {
 
-            //     return 0;
-            // }
+                return 0;
+            }
 
-            // else
-            // {
+            else
+            {
 
-            //     throw new Exception("They can not be compared");
-            // }
+                throw new Exception("They can not be compared");
+            }
 
 
         }
@@ -416,9 +416,12 @@ public class mainMethod
                     Console.Write("Enter some word to be encoded and decoded afrer : ");
                     string decode = Console.ReadLine().ToString();
                     Huffman huffman = new Huffman(decode);
+                    Console.WriteLine("\n---------------------------");
+                    Console.WriteLine("\n");
                     Console.WriteLine("Encoded string: " + huffman.Encode(decode));
 
                     Console.WriteLine("Decoded string: " + huffman.Decode(huffman.Encode(decode)));
+                    Console.WriteLine("\n---------------------------");
                     break;
 
                 case 2:
