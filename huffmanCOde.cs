@@ -7,15 +7,15 @@ namespace huffmanCOde
 
     class Node : IComparable
     {
+        private char i;
+        private int v;
+
         public char Character { get; set; }
         public int Frequency { get; set; }
         public Node Left { get; set; }
         public Node Right { get; set; }
 
-        public Node HuffmanTree { get; set; }
-        public char I { get; }
-        public int V { get; }
-
+       
         public Node(char Character, int Frequency, Node Left, Node Right)
         {
             this.Character = Character;
@@ -26,39 +26,40 @@ namespace huffmanCOde
 
         public Node(char i, int v)
         {
-            I = i;
-            V = v;
+            this.i = i;
+            this.v = v;
         }
 
         public int CompareTo(Object obj)
         {
 
             Node f = (Node)obj;
+            return f.Frequency.CompareTo(this.Frequency);
+            // if (f.Frequency > Frequency)
+            // {
 
-            if (f.Frequency > Frequency)
-            {
+            //     return 1;
+            // }
 
-                return 1;
-            }
+            // else if (f.Frequency < Frequency)
+            // {
 
-            else if (f.Frequency < Frequency)
-            {
+            //     return -1;
+            // }
 
-                return -1;
-            }
+            // else if (f.Frequency == Frequency)
+            // {
 
-            else if (f.Frequency == Frequency)
-            {
+            //     return 0;
+            // }
 
-                return 0;
-            }
+            // else
+            // {
 
-            else
-            {
+            //     throw new Exception("They can not be compared");
+            // }
 
-                throw new Exception("They can not be compared");
-            }
-
+        
         }
     }
 }
@@ -70,9 +71,9 @@ class Huffman
 
 
     private Dictionary<char, string> dictionary = new Dictionary<char, string>(); //dictionary to encode text
-
     private string text;
     string theBit = "";
+   
 
     public Huffman(string S)
     {
@@ -90,11 +91,11 @@ class Huffman
         int[] arrContain = new int[255];
 
 
-        foreach (char character in text)
+        foreach (char m in text)
         {
 
 
-            arrContain[(int)character]++;
+            arrContain[(int)m]++;
         }
 
 
@@ -108,7 +109,7 @@ class Huffman
 
         Node left, Right;
 
-        PriorityQueue<Node> priorityQueue = new PriorityQueue<Node>(255);
+        PriorityQueue<Node> priorityqueue = new PriorityQueue<Node>(255);
 
 
         for (int i = 32; i < arr.Length; i++)
@@ -117,31 +118,31 @@ class Huffman
             if (arr[i] > 0)
             {
 
-                priorityQueue.Add(new Node((char)i, arr[i]));
+                priorityqueue.Add(new Node((char)i, arr[i],null,null));
             }
         }
 
-        if (priorityQueue.Size() == 1)
+        if (priorityqueue.Size() == 1)
         {
 
-            HuffmanTree = priorityQueue.Front();
+            HuffmanTree = priorityqueue.Front();
         }
 
         // --- this else  builds a binary tree
         else
         {
 
-            while (priorityQueue.Size() > 1)
+            while (priorityqueue.Size() > 1)
             {
 
-                left = priorityQueue.Front();
-                priorityQueue.Remove();
-                Right = priorityQueue.Front();
-                priorityQueue.Remove();
-                priorityQueue.Add(new Node('/', left.Frequency + Right.Frequency, left, Right));
+                left = priorityqueue.Front();
+                priorityqueue.Remove();
+                Right = priorityqueue.Front();
+                priorityqueue.Remove();
+                priorityqueue.Add(new Node('/', left.Frequency + Right.Frequency, left, Right));
             }
 
-            HuffmanTree = priorityQueue.Front();
+            HuffmanTree = priorityqueue.Front();
         }
     }
     private void CreateCodes(Node HuffmanTree, string theBits)
@@ -174,7 +175,7 @@ class Huffman
             foreach (KeyValuePair<char, string> value in dictionary)
             {
 
-                if (character == value.Key)
+                if ( character== value.Key)
                     encoded += value.Value;
             }
         }
@@ -185,42 +186,36 @@ class Huffman
     public string Decode(String text)
     {
         Node curr = HuffmanTree;
+     
+
+        Node current = HuffmanTree;
         string decoded = "";
 
-        foreach (char chars in text)
+        foreach (char ch in text)
         {
-
-            if (curr.Left == null)
+            if (current.Left == null)
             {
-
-                decoded += curr.Character;
-                curr = HuffmanTree;
+                decoded += current.Character;
+                current = HuffmanTree;
             }
-
-            else if (chars == '0')
-            {
-
-                curr = curr.Left;
-            }
-
             else
             {
-
-                curr = curr.Right;
+                if (ch == '0')
+                    current = current.Left;
+                else
+                    current = current.Right;
             }
-
+            if (current.Left == null)
+            {
+                decoded += current.Character;
+                current = HuffmanTree;
+            }
         }
-
-        if (curr.Left == null)
-        {
-            decoded += curr.Character;
-            curr = HuffmanTree;
-        }
-
 
         return decoded;
     }
 }
+ 
 public interface IContainer<T>
 {
     void MakeEmpty();
@@ -246,6 +241,7 @@ public class PriorityQueue<T> : IPriorityQueue<T> where T : IComparable
 
         cap = size;
         arr = new T[size + 1];
+        counter = 0;
     }
     private void PercolateUp(int i)
     {
@@ -324,7 +320,7 @@ public class PriorityQueue<T> : IPriorityQueue<T> where T : IComparable
 
         else
         {
-            return arr[0];
+            return default(T);
         }
 
     }
@@ -396,7 +392,7 @@ public class PriorityClass : IComparable
     public override string ToString()
     {
 
-        return name + "--- " + priorValue;
+        return name + " --- " + priorValue;
     }
 }
 //-----------------------------------------------------------------------------
@@ -420,7 +416,7 @@ public class mainMethod
                     Console.Write("Enter some word to : ");
                     String encode = Console.ReadLine();
                     Huffman huffman = new Huffman(encode);
-                    huffman.Encode(encode);
+                    Console.WriteLine(huffman.Encode(encode));
                     break;
                 case 2:
                     Console.Write("decode: ");
@@ -449,5 +445,3 @@ public class mainMethod
         }
     }
 }
-
-
