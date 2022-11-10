@@ -428,7 +428,7 @@ public class mainMethod
                     Console.WriteLine(huffman.Equals(isEqual));
                     break;
 
-                case 4:
+                case 3:
                     Console.WriteLine("Program Exited Successfully!");
                     return;
 
@@ -438,7 +438,7 @@ public class mainMethod
                     break;
             }
 
-
+            //dotnet run
         }
     }
 }
