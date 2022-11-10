@@ -145,7 +145,7 @@ class Huffman
             HuffmanTree = priorityqueue.Front();
         }
     }
-    private void CreateCodes(Node HuffmanTree, string theBits)
+    public void CreateCodes(Node HuffmanTree, string theBits)
     {
 
         Node curr = HuffmanTree;
@@ -401,43 +401,67 @@ public class mainMethod
     static void Main(string[] args)
     {
 
+         
+
+            // priorityClass.CompareTo();
+            
+            // GetHashCode also should be tested, check this and make a main method testing for this, so it will have a different test cases too.
+
+            
 
         while (true)
         { // checking while everything in this while loop is true continue..
             // people to know what are the functions that we have (like a menu type of thing )  
             Console.WriteLine("#1. Encode and decode");
             Console.WriteLine("#2. Equals");
-            Console.WriteLine("#3. Close the application");
+            Console.WriteLine("#3. Get the Hashcode");
+            Console.WriteLine("#4. Close the application");
             Console.Write("Please Enter your choice: ");
             int choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
             { //switch case to do different operation based on the filtering the input of the integer choice 
                 case 1:
                     Console.Write("Enter some word to be encoded and decoded afrer : ");
-                    string decode = Console.ReadLine().ToString();
-                    Huffman huffman = new Huffman(decode);
+                    string StringToBeDecoded = Console.ReadLine().ToString();
+                    Huffman huffman = new Huffman(StringToBeDecoded);
                     Console.WriteLine("\n---------------------------");
                     Console.WriteLine("\n");
-                    Console.WriteLine("Encoded string: " + huffman.Encode(decode));
+                    Console.WriteLine("Encoded string: " + huffman.Encode(StringToBeDecoded));
+                  //  huffman.CreateCodes(,theBits);
 
-                    Console.WriteLine("Decoded string: " + huffman.Decode(huffman.Encode(decode)));
+                    Console.WriteLine("Decoded string: " + huffman.Decode(huffman.Encode(StringToBeDecoded)));
                     Console.WriteLine("\n---------------------------");
                     break;
 
                 case 2:
                     Console.Write("Equals: ");
+                    Console.WriteLine("Enter the word");
                     String isEqual = Console.ReadLine();
                     huffman = new Huffman(isEqual);
-                    Console.WriteLine(huffman.Equals(isEqual));
+                    Console.WriteLine("Enter String to be compared to the object ");
+                    String tobeCompared = Console.ReadLine();
+                    Console.WriteLine(huffman.Equals(tobeCompared));
                     break;
 
                 case 3:
+                     Console.WriteLine("\n---------------------------");
+                     Console.WriteLine("Enter the Priority: ");
+                     int priority = Convert.ToInt32(Console.ReadLine());
+                     Console.WriteLine("Enter the Word or a asentence: ");
+                     String StringToHashCode = Console.ReadLine();
+                     PriorityClass priorityClass = new PriorityClass(priority,StringToHashCode);
+                     Console.WriteLine(priorityClass.GetHashCode());
+                     Console.WriteLine("\n---------------------------");
+                    break;
+
+                case 4:
                     Console.WriteLine("Program Exited Successfully!");
                     return;
 
                 default:
                     Console.WriteLine("Invalid choice Try again!");
                     Console.WriteLine("------------------------------");
+                    
                     break;
             }
 
