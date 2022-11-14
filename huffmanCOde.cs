@@ -87,7 +87,7 @@ class Huffman
         CreateCodes(HuffmanTree, theBit); //invokes the createCodes()
     }
     //analyzetext method    
-    private int[] AnalyzeText()
+    public int[] AnalyzeText()
     {
         //creating new array called arrcountain and it has 255 unalocated locations indexes(the length is 255)
         int[] arrContain = new int[255];
@@ -115,7 +115,7 @@ class Huffman
         PriorityQueue<Node> priorityqueue = new PriorityQueue<Node>(255);
 
 
-        for (int i = 32; i < arr.Length; i++)
+        for (int i = 0; i < arr.Length; i++)
         {
             //if statment for checking if the i-th index of the array is > 0 
             if (arr[i] > 0)
@@ -180,7 +180,8 @@ class Huffman
         string encoded = "";
         //this is advanced for loop / or as we call it sometimes for each loop ( which goes through the str and looks for the item which is character in this case)
         foreach (char item in str)
-        {
+        {   
+            
             //then assigning this char values to the character char variable
             char character = (char)item;
             //again for loop (for each) lookin values in the dictionary using keyvaluePair which is in map
@@ -208,6 +209,7 @@ class Huffman
         string decoded = "";
         //advanced for loop going thrue text looking for characters (char)
         foreach (char character in text)
+        
         {   //if the left == null
             if (current.Left == null)
             {   
@@ -434,7 +436,7 @@ public class PriorityQueue<T> : IPriorityQueue<T> where T : IComparable
     }
 }
 
-public class PriorityClass : IComparable
+public class PriorityClass
 {
     private int priorValue;
     private String name;
@@ -445,12 +447,6 @@ public class PriorityClass : IComparable
         this.name = name;
         priorValue = priority;
     }
-    public int CompareTo(Object obj)
-    {
-
-        PriorityClass other = (PriorityClass)obj;
-        return priorValue - other.priorValue;
-    }   
 
     //overriding the existing to string method, so when called toString it will write in this format.
     public override string ToString()
@@ -462,26 +458,16 @@ public class PriorityClass : IComparable
 //-----------------------------------------------------------------------------
 public class mainMethod
 {   
-
     //our program for the testing 
     static void Main(string[] args)
     {
-
-         
-
-            // priorityClass.CompareTo();
-            
-            // GetHashCode also should be tested, check this and make a main method testing for this, so it will have a different test cases too.
-
             
         //this is a while loop which will be running unconditionaly, untill you manually not stop the process.
         while (true)
         { // checking while everything in this while loop is true continue..
             // people to know what are the functions that we have (like a menu type of thing )  
             Console.WriteLine("#1. Encode and decode");
-            Console.WriteLine("#2. Equals");
-            Console.WriteLine("#3. Get the Hashcode");
-            Console.WriteLine("#4. Close the application");
+            Console.WriteLine("#2. Close the application");
             Console.Write("Please Enter your choice: ");
             int choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
@@ -494,35 +480,14 @@ public class mainMethod
                     Console.WriteLine("\n---------------------------");
                     Console.WriteLine("\n");
                     Console.WriteLine("Encoded string: " + huffman.Encode(StringToBeDecoded));
-                  //  huffman.CreateCodes(,theBits);
-
                     Console.WriteLine("Decoded string: " + huffman.Decode(huffman.Encode(StringToBeDecoded)));
                     Console.WriteLine("\n---------------------------");
+                
 
                     break;
 
-                case 2: // checking the equals method in case 2 
-                    Console.Write("Equals: ");
-                    Console.WriteLine("Enter the word");
-                    String isEqual = Console.ReadLine();
-                    huffman = new Huffman(isEqual);
-                    Console.WriteLine("Enter String to be compared to the object ");
-                    String tobeCompared = Console.ReadLine();
-                    Console.WriteLine(huffman.Equals(tobeCompared));
-                    break;
 
-                case 3: // getting the hashcode based on the priority
-                     Console.WriteLine("\n---------------------------");
-                     Console.WriteLine("Enter the Priority: ");
-                     int priority = Convert.ToInt32(Console.ReadLine());
-                     Console.WriteLine("Enter the Word or a asentence: ");
-                     String StringToHashCode = Console.ReadLine();
-                     PriorityClass priorityClass = new PriorityClass(priority,StringToHashCode);
-                     Console.WriteLine(priorityClass.GetHashCode());
-                     Console.WriteLine("\n---------------------------");
-                    break;
-
-                case 4: // exits the program
+                case 2: // exits the program
                     Console.WriteLine("Program Exited Successfully!");
                     return;
 

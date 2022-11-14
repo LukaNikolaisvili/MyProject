@@ -1,3 +1,5 @@
+
+// ﻿
 // // Group Members: Farzad Imran (0729901), Luka Nikolaisvili (0674677), Abdulrahman Saeed (0706145)  | Assignment 2 Part A
 // using System;
 // using System.Collections.Generic;
@@ -237,12 +239,12 @@
 //             for (int i = 0; i < numBuckets; i++) // For loop to cycle the sort for each bucket
 //             {
 //                 Node curr = HT[i];
-//                 while (curr.next != null) // While loop to navigate teh current bucket
+//                 while (curr.next != null) // While loop to navigate the current bucket
 //                 {
 //                     key1 = HT[i].key;
 //                     key2 = HT[i].next.key;
-//                     sort = key1.CompareTo(key2);
-//                     if (sort < 0)  // if sort is negative, the next node is larger than the current
+//                     sort = key1.GetHashCode().CompareTo(key2.GetHashCode());
+//                     if (sort > 0)  // if sort is positive, the next node is larger than the current
 //                     {
 //                         if (HT[i].next.next != null) // To check if there is 3 nodes within the bucket
 //                         {
@@ -260,7 +262,13 @@
 //                             HT[i].next.next = null;
 //                         }
 //                     }
-//                     curr = curr.next;
+//                     if (HT[i].next != null)
+//                         curr = HT[i].next;
+//                     else
+//                     {
+//                         curr = HT[i];
+
+//                     }
 //                 }
 //             }
 //         }
@@ -285,33 +293,40 @@
 
 //             Console.WriteLine();
 //             Console.WriteLine("Executing Sort");
-//             // H.Output();
+//             H.Output();
 //             H.Print();
-//            for (int i = 0; i < 100; i += 2)
+//             /* for (int i = 0; i < 100; i += 2)
 //                 H.Remove(i);
 
-//             H.Print();
+//             H.Print(); */
 
 //             Console.ReadKey();
 //         }
 //     }
-    
-//      class Point : IComparable
+
+//     class Point : IComparable
+//     {
+//         public int x, y;
+//         public override int GetHashCode()
 //         {
-//             public int x, y;
-//             public override int GetHashCode()
-//             {
-//                 return base.GetHashCode();
-//             }
+//             return base.GetHashCode();
+//         }
 
-//             public override bool Equals(object? obj)
-//             {
-//                 return base.Equals(obj);
-//             }
+//         public override bool Equals(object? obj)
+//         {
+//             return base.Equals(obj);
+//         }
 
-//             public int CompareTo(object? obj)
+//         public int CompareTo(object? obj)
+//         {
+//             int retVal = x.CompareTo(obj.GetHashCode());
+//             if (retVal != 0)
 //             {
-//                 return x.CompareTo(obj);
-//             } 
-//         } 
+//                 return retVal;
+//             }
+//             else
+//                 return y.CompareTo(obj.GetHashCode());
+//         }
+//     }
 // }
+
